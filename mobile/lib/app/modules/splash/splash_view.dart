@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// GANTI IMPORT INI: Arahkan ke halaman Login
+// Import Halaman Login (Dikerjakan oleh Fatika)
 import '../auth/login_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -18,11 +18,11 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void _pindahHalaman() async {
-    // Tunggu 3 detik
+    // Tunggu 3 detik untuk animasi splash
     await Future.delayed(const Duration(seconds: 3));
 
+    // Pastikan widget masih aktif (mounted) sebelum melakukan navigasi
     if (mounted) {
-      // UBAH DI SINI: Arahkan ke LoginView, BUKAN MainNavigationView
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginView()),
@@ -33,26 +33,36 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: const Color(0xFF2E7D32), // Warna Hijau REGREEN
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
+            // Icon / Logo REGREEN
             Icon(Icons.eco, size: 80, color: Colors.white),
             SizedBox(height: 20),
+
+            // Nama Aplikasi
             Text(
               'REGREEN',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
+                letterSpacing: 1.2,
               ),
             ),
             SizedBox(height: 10),
+
+            // Slogan REGREEN
             Text(
               'Ubah Sampahmu jadi Berkah',
               style: TextStyle(fontSize: 16, color: Colors.white70),
             ),
+            SizedBox(height: 40),
+
+            // Indikator Loading
+            CircularProgressIndicator(color: Colors.white, strokeWidth: 3),
           ],
         ),
       ),
